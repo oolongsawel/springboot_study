@@ -11,4 +11,5 @@ public class HelloController {
         model.addAttribute("data", "hello!");
         return "hello";
     }
+
 }
