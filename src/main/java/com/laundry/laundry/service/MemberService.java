@@ -4,6 +4,8 @@ import com.laundry.laundry.domain.Member;
 import com.laundry.laundry.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 public class MemberService {
 
@@ -12,7 +14,8 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public  Long join(Member member){
+    //회원가입
+    public Long join(Member member){
 
         //중복회원 검증
         //validateDuplicateMemberByName(member);
@@ -36,6 +39,11 @@ public class MemberService {
                 .ifPresent(m-> {
                     throw new IllegalStateException("이미 존재하는 핸드폰번호입니다");
                 });
+    }
+
+    //멤버조회
+    public List<Member> ReadMemberList(){
+        return memberRepository.findAll();
     }
 
 

@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class MemberController {
 
@@ -42,5 +44,13 @@ public class MemberController {
         model.addAttribute("message", message);
 
         return "hello";
+    }
+
+    //멤버조회
+    @GetMapping("member/read")
+    public String readMember(Model model){
+        List<Member> memberList = memberService.ReadMemberList();
+        model.addAttribute("memberList", memberList);
+        return "member/read";
     }
 }

@@ -1,11 +1,13 @@
 package com.laundry.laundry.repository;
 
 import com.laundry.laundry.domain.Member;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class JpaMemberRepository implements MemberRepository{
 
     private final EntityManager em;
@@ -32,27 +34,37 @@ public class JpaMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.empty();
+        Member member = em.find(Member.class, id);
+        return Optional.ofNullable(member);
     }
 
     @Override
     public Optional<Member> findByName(String name) {
-        List<Member> result =  em.createQuery("select m from Member m where m.name = :name" , Member.class)
+        List<Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
         return result.stream().findAny();
     }
 
     @Override
-    public Optional<Member> findByPhoneNumber(String phoneNumber) {
-        List<Member> result =  em.createQuery("select m from Member m where m.phoneNumber = :phoneNumber" , Member.class)
-                .setParameter("phoneNumber", phoneNumber)
+    public Optional<Member> findByPhoneNumber(String mobilePhoneNumber) {
+        List<Member> result =  em.createQuery("select m from Member m where m.mobilePhoneNumber = :mobilePhoneNumber" , Member.class)
+                .setParameter("mobilePhoneNumber", mobilePhoneNumber)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findByHomePhoneNumber(String homePhoneNumber) {
+        List<Member> result =  em.createQuery("select m from Member m where m.homePhoneNumber = :homePhoneNumber" , Member.class)
+                .setParameter("homePhoneNumber", homePhoneNumber)
                 .getResultList();
         return result.stream().findAny();
     }
 
     @Override
     public List<Member> findAll() {
-        return null;
+        return em.createQuery("select m from Member m", Member.class)
+                .getResultList();
     }
 }

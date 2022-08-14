@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>핸드폰번호</th>
+                <th>집전화번호</th>
+                <th>메모</th>
+                <th>가입날짜</th>
+                <th>삭제날짜</th>
+                <th>삭제여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="memberList : ${memberList}">
+                <td th:text="${memberList.id}"></td>
+                <td th:text="${memberList.name}"></td>
+                <td th:text="${memberList.mobilePhoneNumber}"></td>
+                <td th:text="${memberList.homePhoneNumber}"></td>
+                <td th:text="${memberList.memo}"></td>
+                <td th:text="${memberList.joinDate}"></td>
+                <td th:text="${memberList.delDate}"></td>
+                <td th:text="${memberList.delYn}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
