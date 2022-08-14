@@ -13,7 +13,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)//PK명시 , id값은 자동으로 +1 하는값
-    private Long id;
+    private int id;
 
     private String name; //이름
 

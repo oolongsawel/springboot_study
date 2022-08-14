@@ -62,4 +62,12 @@ class JpaMemberRepositoryTest {
         List<Member> members = memberRepository.findAll();
         assertThat(members.size()).isEqualTo(8);
     }
+
+
+    @Test
+    void findById(){
+        Optional<Member> member = memberRepository.findById(1);
+        assertThat(member.get().getId()).isEqualTo(1);
+        assertThat(member.get().getName()).isEqualTo("안선영");
+    }
 }

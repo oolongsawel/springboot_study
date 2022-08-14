@@ -18,14 +18,14 @@
             </thead>
             <tbody>
             <tr th:each="memberList : ${memberList}">
-                <td th:text="${memberList.id}"></td>
-                <td th:text="${memberList.name}"></td>
-                <td th:text="${memberList.mobilePhoneNumber}"></td>
-                <td th:text="${memberList.homePhoneNumber}"></td>
-                <td th:text="${memberList.memo}"></td>
-                <td th:text="${memberList.joinDate}"></td>
-                <td th:text="${memberList.delDate}"></td>
-                <td th:text="${memberList.delYn}"></td>
+                <td th:text="${memberList.id}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.name}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.mobilePhoneNumber}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.homePhoneNumber}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.memo}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.joinDate}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.delDate}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
+                <td th:text="${memberList.delYn}" th:onclick="|location.href='@{'/member/read/' + ${memberList.id}}'|" style="cursor:pointer"></td>
             </tr>
             </tbody>
         </table>

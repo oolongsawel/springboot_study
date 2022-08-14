@@ -5,6 +5,7 @@ import com.laundry.laundry.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 public class MemberService {
@@ -15,7 +16,7 @@ public class MemberService {
     }
 
     //회원가입
-    public Long join(Member member){
+    public int join(Member member){
 
         //중복회원 검증
         //validateDuplicateMemberByName(member);
@@ -41,10 +42,14 @@ public class MemberService {
                 });
     }
 
-    //멤버조회
+    //전체멤버조회
     public List<Member> ReadMemberList(){
         return memberRepository.findAll();
     }
 
+    //멤버프로필 조회
+    public Optional<Member> getMemberProfile(int id){
+        return memberRepository.findById(id);
+    }
 
 }
