@@ -37,7 +37,6 @@ public class MemberController {
             member.setMobilePhoneNumber(memberForm.getMobilePhoneNumber());
             member.setHomePhoneNumber(memberForm.getHomePhoneNumber());
             member.setMemo(memberForm.getMemo());
-            System.out.println(member);
             memberService.join(member);
         } catch(Exception e) {
             message = e.getMessage();
