@@ -17,18 +17,19 @@ public class JpaMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member save(Member member) {
+    public Member saveMember(Member member) {
         em.persist(member);
         return member;
     }
 
     @Override
-    public Member update(Member member) {
+    public Member updateMember(Member member) {
+
         return null;
     }
 
     @Override
-    public Member delete(Long id) {
+    public Member deleteMember(Long id) {
         return null;
     }
 

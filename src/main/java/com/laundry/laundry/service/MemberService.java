@@ -21,7 +21,7 @@ public class MemberService {
         //중복회원 검증
         //validateDuplicateMemberByName(member);
         //validateDuplicateMemberByPhoneNumber(member);
-        memberRepository.save(member);
+        memberRepository.saveMember(member);
         return member.getId();
     }
 

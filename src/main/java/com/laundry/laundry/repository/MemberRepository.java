@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface MemberRepository {
 
-    Member save(Member member);
-    Member update(Member member);
-    Member delete(Long id);
+    Member saveMember(Member member);
+    Member updateMember(Member member);
+    Member deleteMember(Long id);
 
     Optional<Member> findById(int id);
     Optional<Member> findByName(String name);

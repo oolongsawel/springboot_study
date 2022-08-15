@@ -26,7 +26,7 @@ class JpaMemberRepositoryTest {
         String compare_name = "안선영";
 
         //builder 클래스를 통해 생성자 생성 후 save (insert/update)
-        memberRepository.save(Member.builder()
+        memberRepository.saveMember(Member.builder()
                 .name(name)
                 .mobilePhoneNumber(mobilePhoneNumber)
                 .homePhoneNumber(homePhoneNumber)
