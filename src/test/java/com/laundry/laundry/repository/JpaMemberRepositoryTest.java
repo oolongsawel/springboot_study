@@ -26,7 +26,7 @@ class JpaMemberRepositoryTest {
         String compare_name = "안선영";
 
         //builder 클래스를 통해 생성자 생성 후 save (insert/update)
-        memberRepository.saveMember(Member.builder()
+        memberRepository.save(Member.builder()
                 .name(name)
                 .mobilePhoneNumber(mobilePhoneNumber)
                 .homePhoneNumber(homePhoneNumber)
@@ -47,7 +47,7 @@ class JpaMemberRepositoryTest {
 
     @Test
     void findByPhoneNumber() {
-        Optional<Member> members = memberRepository.findByPhoneNumber("010-7735-6068");
+        Optional<Member> members = memberRepository.findByMobilePhoneNumber("010-7735-6068");
         assertThat(members.get().getName()).isEqualTo("안선영");
     }
 

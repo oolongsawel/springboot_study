@@ -7,15 +7,15 @@ import java.util.Optional;
 
 public interface MemberRepository {
 
-    Member saveMember(Member member);
-    Member updateMember(Member member);
-    Member deleteMember(Long id);
+    Member save(Member member);
 
     Optional<Member> findById(int id);
     Optional<Member> findByName(String name);
-    Optional<Member> findByPhoneNumber(String phoneNumber);
+    Optional<Member> findByMobilePhoneNumber(String phoneNumber);
     Optional<Member> findByHomePhoneNumber(String homePhoneNumber);
 
 
     List<Member> findAll();
+
+    int updateMemberInfo(int id , String name , String mobilePhoneNumber , String homePhoneNumber, String memo);
 }

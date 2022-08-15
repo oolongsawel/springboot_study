@@ -11,15 +11,15 @@ import java.util.Optional;
 @Transactional
 public class MemberService {
 
-    private final SpringDataJpaMemberRepository memberRepository;
-    public MemberService(SpringDataJpaMemberRepository memberRepository){
+    private final MemberRepository memberRepository;
+    public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
 
     //회원가입
     public int join(Member member){
 
-        //중복회원 검증
+        //중복회원 검증햣
         //validateDuplicateMemberByName(member);
         //validateDuplicateMemberByPhoneNumber(member);
         memberRepository.save(member);
