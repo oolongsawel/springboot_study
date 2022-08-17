@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-
 public interface SpringDataJpaMemberRepository extends JpaRepository<Member,Long> , MemberRepository{
 
     Optional<Member> findById(int id);
@@ -18,13 +17,13 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member,Long
     Optional<Member> findByMobilePhoneNumber(String mobilePhoneNumber);
 
     @Transactional
-    @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE Member m SET m.name = :name " +
-            "and m.mobile_Phone_Number = :mobilePhoneNumber " +
-            "and m.home_Phone_Number = :homePhoneNumber " +
-            "and m.memo = :memo " +
-            "where m.id = :id" , nativeQuery = true)
-    int updateMemberInfo(@Param("id")int id , @Param("name") String name, @Param("mobilePhoneNumber") String mobilePhoneNumber
+    @Modifying (clearAutomatically = true)
+    @Query(value = "UPDATE Member m SET m.name = :name "+
+            ", m.mobile_Phone_Number = :mobilePhoneNumber " +
+            ", m.home_Phone_Number = :homePhoneNumber " +
+            ", m.memo = :memo " +
+            "where m.id = :id " ,nativeQuery = true)
+    void updateMemberInfo( @Param("id")int id, @Param("name") String name, @Param("mobilePhoneNumber") String mobilePhoneNumber
     ,@Param("homePhoneNumber") String homePhoneNumber, @Param("memo") String memo);
 
 

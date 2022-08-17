@@ -64,4 +64,26 @@ public class MemberController {
         }
         return "member/memberProfile.html";
     }
+
+    //수정위한 멤버 폼
+    @GetMapping("/member/updateMemberForm/{id}")
+    public String updateMemberForm(@PathVariable("id") int id, Model model){
+        Optional<Member> member = memberService.getMemberProfile(id);
+        if( member.isPresent() ) {
+            model.addAttribute("member", member.get());
+        }
+        return "member/updateMemberForm.html";
+    }
+
+    //멤버수정
+    @PostMapping("member/updateMemberForm/{id}")
+    public String updateMember(@PathVariable("id") int id, MemberForm memberForm , Model model){
+        String name = memberForm.getName();
+        String mobilePhoneNumber = memberForm.getMobilePhoneNumber();
+        String homePhoneNumber = memberForm.getHomePhoneNumber();
+        String memo = memberForm.getMemo();
+        memberService.updateMember(id , name ,mobilePhoneNumber, homePhoneNumber, memo);
+
+        return "hello";
+    }
 }

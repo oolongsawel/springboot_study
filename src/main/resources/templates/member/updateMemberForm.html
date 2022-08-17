@@ -3,22 +3,22 @@
 
 <body>
 <div class="container">
-    <form th:action="createMemberForm" method="post">
+    <form th:action="@{|${member.id}|}" method="post">
         <div class="form-group">
           <div>
             <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+            <input type="text" id="name" name="name" th:value="${member.name}">
           </div>
           <div>
             <label for="homePhoneNumber">집 전화번호</label>
-            <input type="text" id="homePhoneNumber" name="homePhoneNumber" class="PhoneNumber" maxlength="12" placeholder="집 전화번호를 입력하세요">
+            <input type="text" id="homePhoneNumber" name="homePhoneNumber" class="PhoneNumber" maxlength="12" th:value="${member.homePhoneNumber}">
           </div>
           <div>
             <label for="mobilePhoneNumber">핸드폰 번호</label>
-            <input type="text" id="mobilePhoneNumber" name="mobilePhoneNumber" class="PhoneNumber" maxlength="13" placeholder="핸드폰 번호를 입력하세요">
+            <input type="text" id="mobilePhoneNumber" name="mobilePhoneNumber" class="PhoneNumber" maxlength="13" th:value="${member.mobilePhoneNumber}">
           </div>
           <div>
-            <textarea type="text" id="memo" name="memo" placeholder="메모" cols="40" rows="8"></textarea>
+            <textarea type="text" id="memo" name="memo" th:value="${member.memo}" cols="40" rows="8"></textarea>
           </div>
         </div>
         <button type="submit">등록</button>

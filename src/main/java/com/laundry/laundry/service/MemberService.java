@@ -54,4 +54,9 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
+    //멤버수정
+    public void updateMember(int id ,String name, String mobilePhoneNumber , String homePhoneNumber, String memo){
+        memberRepository.updateMemberInfo(id , name , mobilePhoneNumber , homePhoneNumber, memo);
+    };
+
 }
