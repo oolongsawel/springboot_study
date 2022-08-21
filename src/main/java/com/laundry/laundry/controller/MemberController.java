@@ -50,7 +50,9 @@ public class MemberController {
     //전체멤버조회
     @GetMapping("member/read")
     public String readMember(Model model){
-        List<Member> memberList = memberService.ReadMemberList();
+        //List<Member> memberList = memberService.ReadMemberList();
+        List<Member> memberList = memberService.ReadMemberListByDelYn();
+
         model.addAttribute("memberList", memberList);
         return "member/read";
     }
@@ -83,6 +85,15 @@ public class MemberController {
         String homePhoneNumber = memberForm.getHomePhoneNumber();
         String memo = memberForm.getMemo();
         memberService.updateMember(id , name ,mobilePhoneNumber, homePhoneNumber, memo);
+
+        return "hello";
+    }
+
+    //멤버삭제
+    @GetMapping("member/delete/{id}")
+    public String deleteMember(@PathVariable("id") int id , Model model){
+
+        memberService.deleteMember(id);
 
         return "hello";
     }

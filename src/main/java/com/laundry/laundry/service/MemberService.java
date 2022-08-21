@@ -47,6 +47,10 @@ public class MemberService {
     public List<Member> ReadMemberList(){
         return memberRepository.findAll();
     }
+    public List<Member> ReadMemberListByDelYn(){
+        return memberRepository.findByDelYnFalse();
+    }
+
 
 
     //멤버프로필 조회
@@ -54,9 +58,15 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
+
+
     //멤버수정
     public void updateMember(int id ,String name, String mobilePhoneNumber , String homePhoneNumber, String memo){
         memberRepository.updateMemberInfo(id , name , mobilePhoneNumber , homePhoneNumber, memo);
+    };
+
+    public void deleteMember(int id){
+        memberRepository.updateMemberDelYn(id);
     };
 
 }

@@ -33,8 +33,7 @@
     </table>
   </div>
   <button th:onclick="|location.href='@{'/member/updateMemberForm/' + ${member.id}}'|">회원수정</button>
-  <a href="/member/delete">회원 삭제</a>
-  
+  <button th:onclick="|location.href='@{'/member/delete/' + ${member.id}}'|">회원삭제</button>
 </div> <!-- /container -->
 </body>
 </html>
