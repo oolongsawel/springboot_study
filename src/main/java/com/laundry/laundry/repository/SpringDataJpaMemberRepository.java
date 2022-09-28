@@ -13,7 +13,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member,Long
 
     Optional<Member> findById(int id);
 
-    Optional<Member> findByName(String name);
+    List<Member> findByName(String name);
 
     Optional<Member> findByMobilePhoneNumber(String mobilePhoneNumber);
 

@@ -2,7 +2,6 @@ package com.laundry.laundry.service;
 
 import com.laundry.laundry.domain.Member;
 import com.laundry.laundry.repository.MemberRepository;
-import com.laundry.laundry.repository.SpringDataJpaMemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -27,13 +26,13 @@ public class MemberService {
     }
 
     //중복확인
-    private void validateDuplicateMemberByName(Member member){
-        //같은 이름이 중복 회원X
-        memberRepository.findByName(member.getName())
-                .ifPresent(m-> {
-                    throw new IllegalStateException("이미 존재하는 이름입니다");
-                });
-    }
+//    private void validateDuplicateMemberByName(Member member){
+//        //같은 이름이 중복 회원X
+//        memberRepository.findByName(member.getName())
+//                .ifPresent(m-> {
+//                    throw new IllegalStateException("이미 존재하는 이름입니다");
+//                });
+//    }
 
     private void validateDuplicateMemberByPhoneNumber(Member member){
         //같은 이름이 중복 회원X
@@ -68,5 +67,10 @@ public class MemberService {
     public void deleteMember(int id){
         memberRepository.updateMemberDelYn(id);
     };
+
+    //멤버검색
+    public List<Member> SearchMemberList(String name){
+        return memberRepository.findByName(name);
+    }
 
 }

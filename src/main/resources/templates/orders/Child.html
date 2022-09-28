@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <form th:action="child" method="post">
+        <div class="form-group">
+                <label for="name">고객이름</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+        </div>
+        <button type="submit">검색</button>
+    </form>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>핸드폰번호</th>
+                <th>집전화번호</th>
+                <th>메모</th>
+                <th>가입날짜</th>
+                <th>삭제날짜</th>
+                <th>삭제여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="memberList : ${memberList}">
+                <td th:text="${memberList.id}"></td>
+                <td th:text="${memberList.name}"></td>
+                <td th:text="${memberList.mobilePhoneNumber}"></td>
+                <td th:text="${memberList.homePhoneNumber}"></td>
+                <td th:text="${memberList.memo}"></td>
+                <td th:text="${memberList.joinDate}"></td>
+                <td th:text="${memberList.delDate}"></td>
+                <td th:text="${memberList.delYn}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.laundry.laundry.controller;
 
+import com.laundry.laundry.domain.Member;
 import com.laundry.laundry.domain.Orders;
+import com.laundry.laundry.service.MemberService;
 import com.laundry.laundry.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,15 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrdersController {
     private final OrdersService ordersService;
 
+    private final MemberService memberService;
+
     @Autowired
-    public OrdersController(OrdersService ordersService){
+    public OrdersController(OrdersService ordersService, MemberService memberService){
         this.ordersService = ordersService;
+        this.memberService = memberService;
     }
 
     @GetMapping("orders/createOrdersForm")
@@ -47,5 +53,20 @@ public class OrdersController {
         model.addAttribute("message", message);
 
         return "hello";
+    }
+
+    @GetMapping("orders/child")
+    public String child(){
+        return "orders/child";
+    }
+
+    //멤버검색
+    @PostMapping("orders/child")
+    public String searchMember(MemberForm memberForm , Model model){
+        //memberForm.getName()
+        List<Member> memberList = memberService.SearchMemberList(memberForm.getName());
+
+        model.addAttribute("memberList", memberList);
+        return "orders/child";
     }
 }

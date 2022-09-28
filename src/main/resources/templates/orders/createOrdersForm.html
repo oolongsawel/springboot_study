@@ -8,6 +8,10 @@
       <div>
         <label for="memberName">고객이름</label>
         <input type="text" id="memberName" name="memberName" placeholder="이름을 입력하세요">
+
+        <input type="button" value="자식창 열기" onclick="openChild()"><br>
+        전달할 값 : <input type="text" id="pInput">
+
       </div>
       <div>
         <textarea type="text" id="memo" name="memo" placeholder="메모" cols="40" rows="8"></textarea>
@@ -39,6 +43,12 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
    document.getElementById('orderDate').value= new Date().toISOString().slice(0, -1);
+
+   function openChild()
+        {
+            window.open("child", "childForm", "width=570, height=350, resizable = no, scrollbars = no");
+        }
+
 </script>
 
 

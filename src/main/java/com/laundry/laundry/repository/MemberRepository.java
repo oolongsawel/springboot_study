@@ -11,7 +11,7 @@ public interface MemberRepository {
     Member save(Member member);
 
     Optional<Member> findById(int id);
-    Optional<Member> findByName(String name);
+    List<Member> findByName(String name);
     Optional<Member> findByMobilePhoneNumber(String phoneNumber);
     Optional<Member> findByHomePhoneNumber(String homePhoneNumber);
     List<Member> findByDelYnFalse();
